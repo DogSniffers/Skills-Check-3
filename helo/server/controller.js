@@ -1,6 +1,17 @@
 const bcrypt = require('bcryptjs')
 
 module.exports ={
+    getPosts: async (req,res) =>{
+        const {search, userPosts} = req.body
+        const {id} = req.params
+        const db = req.app.get('db')
+        const posts = await db.get_posts([id])
+        if(posts[0]){
+            res.status(200).send(posts)
+        }else{
+            res.status(404).send('There are no posts Available')
+        }
+    },
     login: async (req, res) => {
         const {username,password} = req.body
         const {session} = req
