@@ -4,7 +4,11 @@ class Nav extends React.Component{
 
     render(){
         return(
-            <div>Nav</div>
+            <div>Nav
+                <button>Home</button>
+                <button>New Post</button>
+                <button>Logout</button>
+            </div>
         )
     }
 }
