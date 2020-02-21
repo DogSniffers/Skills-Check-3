@@ -1,5 +1,5 @@
 import React from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../ducks/reducer'
 
@@ -25,23 +25,24 @@ class Auth extends React.Component{
     // handleChange()
     login = () =>{
         const {username,password} = this.state
-        Axios.post('/api/auth/login', {username,password}).then(res =>{
+        axios.post('/api/auth/login', {username,password}).then(res =>{
             this.props.getUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => console.log(err))
 
     };
     register = () =>{
+        console.log('hit')
         const {username,password} = this.state
-        Axios.post('/api/auth/register', {username,password}).then(res =>{
-            this.props.getUser(res.data)
+        axios.post('/api/auth/register', {username,password}).then(res =>{
+            // this.props.getUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => console.log(err))
     };
 
     render(){
         // console.log(this.state.username)
-        // console.log(this.state.password)
+        console.log(this.state.password)
         return(
             <div>Auth
                 <div>Username:<input onChange={this.handleNameInput} placeholder='Enter Username'></input></div>

@@ -13,7 +13,7 @@ class Dashboard extends React.Component{
         }
     }
     // getPosts = () =>{
-    //     axios.get(`/api/posts/${this.props.id}`).then(res =>{
+    //     axios.get(`/api/posts/${this.props.id}`,{userposts,search}).then(res =>{
     //         this.setState({posts:res.data})
     //     })
     // }
@@ -48,7 +48,7 @@ class Dashboard extends React.Component{
 
     render(){
         console.log(this.state.userposts)
-        const mappedPosts = this.state.posts.map()
+        // const mappedPosts = this.state.posts.map()
         return(
             <div>Dashboard
                 <input placeholder='Search Posts'></input>

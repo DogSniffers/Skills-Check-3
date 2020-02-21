@@ -2,13 +2,18 @@ const bcrypt = require('bcryptjs')
 
 module.exports ={
     getPosts: async (req,res) =>{
-        const {id,search} = req.params
+        const {id} = req.params
+        const {userposts,search} = req.body
         const db = req.app.get('db')
         const posts = db.get_posts([id])
         if(posts[0]){
-            
+            if(userposts === true){
+           const userPosts = pos
         }
-      
+    }
+        else{
+            res.status(400).send('NO POSTS BRO')
+        }
     },
     login: async (req, res) => {
         const {username,password} = req.body
@@ -20,10 +25,10 @@ module.exports ={
             return res.status(400).send('Username Not Found')
         }
         const authenticated = bcrypt.compareSync(password, user.password)
-        if(authenticated){
+        if(authenticated === true){
             delete user.password
             session.user = user
-            res.status(200).send(session.user)
+            res.status(202).send(session.user)
         }else{
             res.status(400).send('Incorrect Password ;(')
         }
@@ -45,6 +50,15 @@ module.exports ={
         let newUser = db.register({username,hash})
         session.user = newUser
         res.status(200).send(session.user)
+    },
+
+    newPost: (req,res) =>{
+        const db = req.app.get('db')
+        const {id} = req.params
+        const {title,img,content} = req.params
+        db.add_post([title,img,content]).then(() =>{
+            res.sendStatus(201)
+        }).catch(err => console.log(err))
     }
 
     
