@@ -1,2 +1,3 @@
 SELECT * FROM posts
+WHERE id = $1
 ORDER BY DESC

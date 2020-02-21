@@ -2,14 +2,13 @@ const bcrypt = require('bcryptjs')
 
 module.exports ={
     getPosts: async (req,res) =>{
-        const {id} = req.params
+        const {id,search} = req.params
         const db = req.app.get('db')
-        const posts = await db.get_posts([id])
+        const posts = db.get_posts([id])
         if(posts[0]){
-            res.status(200).send(posts)
-        }else{
-            res.status(404).send('There are no posts Available')
+            
         }
+      
     },
     login: async (req, res) => {
         const {username,password} = req.body
@@ -40,7 +39,7 @@ module.exports ={
         if(user){
             return res.status(400).send('Username already in Use')
         }
-        const salt = bcrypt.genSaltSync(20)
+        const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password,salt)
 
         let newUser = db.register({username,hash})

@@ -6,9 +6,9 @@ CREATE TABLE usersHelo (
 );
 
 CREATE TABLE posts (
-    id SERIAL PRIMARY KEY,
+    post_id SERIAL PRIMARY KEY,
     title VARCHAR(45),
     img TEXT,
     content TEXT,
-    author_id int REFERENCES user(id)
+    id int REFERENCES usersHelo(id)
 );

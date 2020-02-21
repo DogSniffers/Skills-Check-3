@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux';
 
 class Dashboard extends React.Component{
     constructor(){
@@ -11,37 +12,39 @@ class Dashboard extends React.Component{
             
         }
     }
-    getPosts = () =>{
-        axios.get('/api/posts/id').then(res =>{
-            this.setState({posts:res.data})
-        })
-        if(this.state.posts === true){
-            if(this.state.search === ''){
-                return
-            }else if(this.state.search !== ''){
-                this.state.posts.forEach(Element,index =>{
-                    if(this.state.posts.content !== this.state.search){
-                        this.state.posts.splice(index,1)
-                    }
-                })
-                }
+    // getPosts = () =>{
+    //     axios.get(`/api/posts/${this.props.id}`).then(res =>{
+    //         this.setState({posts:res.data})
+    //     })
+    // }
 
-        }else if(this.state.search === ''){
-            this.state.posts.forEach(Element,index => {
-                if(this.state.posts.user_id === this.props.user_id){
-                    this.state.posts.splice(index,1)
-                }
-        })
-        }else{
-            this.state.posts.forEach(Element,index =>{
-                if(this.state.posts.content !== this.state.search){
-                    this.state.posts.props.splice(index,1)
-                }
-            })
-        }
 
-        
-    }
+    // filterPosts = () =>{
+    //     if(this.state.posts === true){
+    //         if(this.state.search === ''){
+    //             return
+    //         }else if(this.state.search !== ''){
+    //             this.state.posts.forEach(Element,index =>{
+    //                 if(this.state.posts.content[index] !== this.state.search){
+    //                     this.state.posts.splice(index,1)
+    //                 }
+    //             })
+    //             }
+
+    //     }else if(this.state.search === ''){
+    //         this.state.posts.forEach(Element,index => {
+    //             if(this.state.posts.user_id[index] === this.props.user_id){
+    //                 this.state.posts.splice(index,1)
+    //             }
+    //     })
+    //     }else{
+    //         this.state.posts.forEach(Element,index =>{
+    //             if(this.state.posts.content[index] !== this.state.search){
+    //                 this.state.posts.props.splice(index,1)
+    //             }
+    //         })
+    //     }
+    // }
 
     render(){
         console.log(this.state.userposts)
@@ -49,15 +52,21 @@ class Dashboard extends React.Component{
         return(
             <div>Dashboard
                 <input placeholder='Search Posts'></input>
-                <button>Search</button>
+                <button onClick={this.searchPosts}>Filter Search</button>
                 <button>Clear</button>
                 <div>My Posts:
                 <input type='checkbox'></input>
                 </div>
             </div>
         )
-        
+    }
+}
+const mapStateToProps = reduxState =>{
+    const {id} = reduxState
+    return{
+        id
     }
 }
 
-export default Dashboard;
+
+export default connect(mapStateToProps)(Dashboard);
