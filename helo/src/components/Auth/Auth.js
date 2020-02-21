@@ -44,8 +44,8 @@ class Auth extends React.Component{
         // console.log(this.state.password)
         return(
             <div>Auth
-                <div>Username:<input onChange={this.handleNameInput}></input></div>
-                <div>Password:<input onChange={this.handlePasswordInput}></input></div>
+                <div>Username:<input onChange={this.handleNameInput} placeholder='Enter Username'></input></div>
+                <div>Password:<input onChange={this.handlePasswordInput} placeholder='Enter Password'></input></div>
                 <button onClick={this.login}>Login</button>
                 <button onClick={this.register}>Register</button>
             </div>

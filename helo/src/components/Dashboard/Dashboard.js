@@ -7,16 +7,26 @@ class Dashboard extends React.Component{
         this.state ={
             posts: [],
             search: '',
-            userposts: true
+            userposts: true,
+            
         }
     }
     // axios.get()
     // resetSearch()
 
     render(){
+        console.log(this.state.userposts)
         return(
-            <div>Dashboard</div>
+            <div>Dashboard
+                <input placeholder='Search Posts'></input>
+                <button>Search</button>
+                <button>Clear</button>
+                <div>My Posts:
+                <input type='checkbox'></input>
+                </div>
+            </div>
         )
+        
     }
 }
 
