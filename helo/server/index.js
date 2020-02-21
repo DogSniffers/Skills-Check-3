@@ -18,19 +18,16 @@ app.use(
 
     })
 )
-
-
-
 massive({
     connectionString: CONNECTION_STRING,
     ssl:{
         rejectUnauthorized: false
     }
-
 }).then(db =>{
     const port = SERVER_PORT
     app.set('db', db)
     app.listen(port|| 4000, () => console.log(`Listening on ${port}`))
-})
+});
 
 app.post('/api/auth/register', controller.register);
+app.post('/api/auth/login', controller.login);

@@ -21,13 +21,19 @@ class Auth extends React.Component{
         })
     }
     // handleChange()
-    // login()
+    login = () =>{
+        const {username,password} = this.state
+        Axios.post('/api/auth/login', {username,password}).then(res =>{
+            this.props.history.push('/dashboard')
+        }).catch(err => console.log(err))
+
+    };
     register = () =>{
         const {username,password} = this.state
         Axios.post('/api/auth/register', {username,password}).then(res =>{
             this.props.history.push('/dashboard')
         }).catch(err => console.log(err))
-    }
+    };
 
     render(){
         // console.log(this.state.username)
@@ -36,7 +42,7 @@ class Auth extends React.Component{
             <div>Auth
                 <div>Username:<input onChange={this.handleNameInput}></input></div>
                 <div>Password:<input onChange={this.handlePasswordInput}></input></div>
-                <button>Login</button>
+                <button onClick={this.login}>Login</button>
                 <button onClick={this.register}>Register</button>
             </div>
         )
