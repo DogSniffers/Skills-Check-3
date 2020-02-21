@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 module.exports ={
     getPosts: async (req,res) =>{
         const {id} = req.params
-        const {userposts,search} = req.body
+        const {userpost,search} = req.body
         const db = req.app.get('db')
         const posts = db.get_posts([id])
         if(posts[0]){

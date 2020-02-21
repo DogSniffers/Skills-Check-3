@@ -12,11 +12,11 @@ class Dashboard extends React.Component{
             
         }
     }
-    // getPosts = () =>{
-    //     axios.get(`/api/posts/${this.props.id}`,{userposts,search}).then(res =>{
-    //         this.setState({posts:res.data})
-    //     })
-    // }
+    getPosts = () =>{
+        axios.get(`/api/posts/${this.props.id}`,{userposts: this.userposts,search:this.search}).then(res =>{
+            this.setState({posts:res.data})
+        })
+    }
 
 
     // filterPosts = () =>{
@@ -47,7 +47,7 @@ class Dashboard extends React.Component{
     // }
 
     render(){
-        console.log(this.state.userposts)
+        console.log(this.state.posts)
         // const mappedPosts = this.state.posts.map()
         return(
             <div>Dashboard

@@ -41,7 +41,20 @@
 }
 
 .auth {
-  height: 50%;
+  height: 25%;
   width: 40%;
   background-color: yellowgreen;
+  
+
+
 }
+
+.navbar {
+  display: flex;
+  position: fixed;
+  width: 20%;
+  height: 100vh;
+  background-color: turquoise;
+
+}
+

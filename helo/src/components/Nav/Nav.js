@@ -7,7 +7,8 @@ class Nav extends React.Component{
     render(){
         // console.log(this.props)
         return(
-            <div>Nav
+            <div className='navbar'>Helo
+            <div>
                 <div>
                 <p>{this.props.username}</p>
                 <img>{this.props.profilePic}</img>
@@ -20,6 +21,7 @@ class Nav extends React.Component{
                 </div>
                 <div>
                     <Link to ='/'><button>Logout</button></Link>
+                </div>
                 </div>
             </div>
         )

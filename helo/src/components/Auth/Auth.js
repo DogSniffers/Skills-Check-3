@@ -35,8 +35,8 @@ class Auth extends React.Component{
         console.log('hit')
         const {username,password} = this.state
         axios.post('/api/auth/register', {username,password}).then(res =>{
-            // this.props.getUser(res.data)
-            this.props.history.push('/dashboard')
+            this.props.getUser(res.data)
+            // this.props.history.push('/dashboard')
         }).catch(err => console.log(err))
     };
 
@@ -44,7 +44,7 @@ class Auth extends React.Component{
         // console.log(this.state.username)
         console.log(this.state.password)
         return(
-            <div>Auth
+            <div className='auth'>Auth
                 <div>Username:<input onChange={this.handleNameInput} placeholder='Enter Username'></input></div>
                 <div>Password:<input onChange={this.handlePasswordInput} placeholder='Enter Password'></input></div>
                 <button onClick={this.login}>Login</button>
