@@ -1,5 +1,6 @@
 import React from 'react'
 // import axios from 'axios'
+import {connect} from 'react-redux'
 
 class Post extends React.Component{
     constructor(){
@@ -23,5 +24,12 @@ class Post extends React.Component{
         )
     }
 }
+const mapStateToProps= reduxState => {
+    const {id} = reduxState
+    return{
+        id
+    }
 
-export default Post
+}
+
+export default connect(mapStateToProps)(Post)

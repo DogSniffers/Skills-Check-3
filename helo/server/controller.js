@@ -59,6 +59,10 @@ module.exports ={
         db.add_post([title,img,content]).then(() =>{
             res.sendStatus(201)
         }).catch(err => console.log(err))
+    },
+
+    deletePost: (req,res) =>{
+        const db = req.app.get('db')
     }
 
     
