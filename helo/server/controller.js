@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs')
 
 module.exports ={
     getPosts: async (req,res) =>{
-        const {search, userPosts} = req.body
         const {id} = req.params
         const db = req.app.get('db')
         const posts = await db.get_posts([id])

@@ -12,7 +12,33 @@ class Dashboard extends React.Component{
         }
     }
     getPosts = () =>{
-        axios.get(`/api/posts/id`, this.state.userposts,this.statesearch).then()
+        axios.get('/api/posts/id').then(res =>{
+            this.setState({posts:res.data})
+        })
+        if(this.state.posts === true){
+            if(this.state.search === ''){
+                return
+            }else if(this.state.search !== ''){
+                this.state.posts.forEach(Element,index =>{
+                    if(this.state.posts.content !== this.state.search){
+                        this.state.posts.splice(index,1)
+                    }
+                })
+                }
+
+        }else if(this.state.search === ''){
+            this.state.posts.forEach(Element,index => {
+                if(this.state.posts.user_id === this.props.user_id){
+                    this.state.posts.splice(index,1)
+                }
+        })
+        }else{
+            this.state.posts.forEach(Element,index =>{
+                if(this.state.posts.content !== this.state.search){
+                    this.state.posts.props.splice(index,1)
+                }
+            })
+        }
 
         
     }
