@@ -17,7 +17,9 @@ class Post extends React.Component{
 
     render(){
         return(
-            <div>Post</div>
+            <div>Post
+                <button>Delete</button>
+            </div>
         )
     }
 }

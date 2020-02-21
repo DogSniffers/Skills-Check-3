@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import Axios from 'axios'
 // import axios from 'axios'
 
@@ -23,7 +24,7 @@ class Form extends React.Component{
         this.setState({content: event.target.value})
     }
     addPost = () => {
-        Axios.post(`/api/post/:${this.props.reduxState.id}`)
+        Axios.post(`/api/post/:${this.props.reduxState.id}`,{title:this.state.title, img:this.state.img,content:this.state.content}).then().catch(err => console.log(err))
     }
 
 
@@ -35,7 +36,8 @@ class Form extends React.Component{
                 <input  onChange = {this.handleTitleChange}placeholder='Title'></input>
                 <input onChange = {this.handleImgChange}placeholder='Image URL'></input>
                 <input onChange = {this.handleContentChange}placeholder='Content'></input>
-                <button>Post</button>
+                <div><Link to ='/dashboard'>
+                <button onClick={this.addPost}>Post</button></Link></div>
             </div>
         )
     }
