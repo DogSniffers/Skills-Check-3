@@ -31,7 +31,7 @@ class Form extends React.Component{
 
 
     render(){
-        console.log(this.state)
+        // console.log(this.state)
         return(
             <div>New Post:
                 <input  onChange = {this.handleTitleChange}placeholder='Title'></input>

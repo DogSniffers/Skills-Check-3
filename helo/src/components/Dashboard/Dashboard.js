@@ -12,8 +12,13 @@ class Dashboard extends React.Component{
             
         }
     }
+    componentDidMount(){
+        this.getPosts()
+        // console.log(this.posts)
+    }
     getPosts = () =>{
         axios.get(`/api/posts/${this.props.id}`,{userposts: this.userposts,search:this.search}).then(res =>{
+            console.log(res.data)
             this.setState({posts:res.data})
         })
     }
@@ -47,11 +52,12 @@ class Dashboard extends React.Component{
     // }
 
     render(){
-        console.log(this.props)
+        console.log(this.state.posts)
         return(
-            <div>Dashboard
+            <div>
+                Dashboard
                 <input placeholder='Search Posts'></input>
-                <button onClick={this.searchPosts}>Filter Search</button>
+                <button onClick={this.searchPosts}>Search</button>
                 <button>Clear</button>
                 <div>My Posts:
                 <input type='checkbox'></input>
