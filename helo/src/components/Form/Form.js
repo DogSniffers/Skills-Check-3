@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import Axios from 'axios'
 // import axios from 'axios'
 
@@ -24,7 +25,7 @@ class Form extends React.Component{
         this.setState({content: event.target.value})
     }
     addPost = () => {
-        Axios.post(`/api/post/:${this.props.id}`,{title:this.state.title, img:this.state.img,content:this.state.content}).then().catch(err => console.log(err))
+        Axios.post(`/api/post/${this.props.id}`,{title:this.state.title, img:this.state.img,content:this.state.content}).then().catch(err => console.log(err))
     }
 
 
@@ -51,4 +52,4 @@ const mapStateToProps = reduxState =>{
 
 }
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps)(withRouter(Form));
