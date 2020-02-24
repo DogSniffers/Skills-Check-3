@@ -24,7 +24,7 @@ class Form extends React.Component{
         this.setState({content: event.target.value})
     }
     addPost = () => {
-        Axios.post(`/api/post/:${this.props.reduxState.id}`,{title:this.state.title, img:this.state.img,content:this.state.content}).then().catch(err => console.log(err))
+        Axios.post(`/api/post/:${this.props.id}`,{title:this.state.title, img:this.state.img,content:this.state.content}).then().catch(err => console.log(err))
     }
 
 

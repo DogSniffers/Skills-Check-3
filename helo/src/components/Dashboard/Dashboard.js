@@ -47,9 +47,7 @@ class Dashboard extends React.Component{
     // }
 
     render(){
-        // console.log(this.state.posts)
-        console.log(this.props.store)
-        console.log(this.props.initialState)
+        console.log(this.props)
         return(
             <div>Dashboard
                 <input placeholder='Search Posts'></input>
@@ -57,6 +55,7 @@ class Dashboard extends React.Component{
                 <button>Clear</button>
                 <div>My Posts:
                 <input type='checkbox'></input>
+        
                 </div>
             </div>
         )
