@@ -57,8 +57,9 @@ module.exports ={
 
     newPost: (req,res) =>{
         const db = req.app.get('db')
-        const {id} = req.params
-        const {title,img,content} = req.params
+        // const {id} = req.props.id
+        const {title,img,content} = req.body
+        console.log(title,img,content)
         db.add_post([title,img,content]).then(() =>{
             res.sendStatus(201)
         }).catch(err => console.log(err))
