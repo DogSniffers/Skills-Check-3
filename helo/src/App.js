@@ -1,8 +1,8 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
-import Auth from './components/Auth/Auth'
-import Nav from './components/Nav/Nav'
-import route from './routes'
+import {withRouter} from 'react-router-dom';
+import Auth from './components/Auth/Auth';
+import Nav from './components/Nav/Nav';
+import route from './routes';
 import './App.css';
 
 function App(props) {

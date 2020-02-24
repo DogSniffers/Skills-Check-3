@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 class Nav extends React.Component{
 
     render(){
-        // console.log(this.props)
+        console.log(this.props)
         return(
             <div className='navbar'>Helo
             <div>
@@ -27,11 +27,12 @@ class Nav extends React.Component{
         )
     }
 }
-const mapStateToProps = reduxState =>{
-    const {username, profilepic} = reduxState
+const mapStateToProps = reduxState => {
+    // console.log(reduxState)
+    const {username, profile_pic} = reduxState
     return{
         username,
-        profilepic
+        profile_pic,
     }
 }
 export default connect(mapStateToProps)(Nav)

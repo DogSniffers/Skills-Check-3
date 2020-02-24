@@ -41,16 +41,16 @@ module.exports ={
 
         let user = await db.check_user([username])
         accountName = user[0]
-        console.log(user)
+        // console.log(user)
         if(accountName){
             return res.status(400).send('Username already in Use')
         }
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password,salt)
-        console.log(hash,username)
+        // console.log(hash,username)
 
         let newUser = await db.register({username,hash})
-        console.log(newUser)
+        // console.log(newUser)
         session.user = newUser
         res.status(200).send(session.user)
     },

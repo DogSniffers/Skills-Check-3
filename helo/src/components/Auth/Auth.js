@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../ducks/reducer'
+import {withRouter} from 'react-router-dom'
 
 class Auth extends React.Component{
     constructor(){
@@ -26,23 +27,25 @@ class Auth extends React.Component{
     login = () =>{
         const {username,password} = this.state
         axios.post('/api/auth/login', {username,password}).then(res =>{
+            // console.log(res.data)
             this.props.getUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => console.log(err))
 
     };
     register = () =>{
-        console.log('hit')
+        // console.log('hit')
         const {username,password} = this.state
         axios.post('/api/auth/register', {username,password}).then(res =>{
             this.props.getUser(res.data)
-            // this.props.history.push('/dashboard')
-        }).catch(err => console.log(err), console.log('hit2'))
+            this.props.history.push('/dashboard')
+        }).catch(err => console.log(err))
     };
 
     render(){
         // console.log(this.state.username)
-        console.log(this.state.password)
+        // console.log(this.state.password)
+        // console.log(this.props.history)
         return(
             <div className='auth'>Auth
                 <div>Username:<input onChange={this.handleNameInput} placeholder='Enter Username'></input></div>
@@ -53,4 +56,4 @@ class Auth extends React.Component{
         )
     }
 }
-export default connect(null,{getUser})(Auth);
+export default connect(null,{getUser})(withRouter(Auth));

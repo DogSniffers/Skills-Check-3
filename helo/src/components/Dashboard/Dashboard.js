@@ -47,8 +47,9 @@ class Dashboard extends React.Component{
     // }
 
     render(){
-        console.log(this.state.posts)
-        // const mappedPosts = this.state.posts.map()
+        // console.log(this.state.posts)
+        console.log(this.props.store)
+        console.log(this.props.initialState)
         return(
             <div>Dashboard
                 <input placeholder='Search Posts'></input>
