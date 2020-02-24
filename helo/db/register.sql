@@ -3,7 +3,7 @@ INSERT INTO usershelo (
     password
 )
 VALUES(
-    ${username}
+    ${username},
     ${hash}
 )
 RETURNING  id, username

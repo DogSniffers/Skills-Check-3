@@ -1,8 +1,8 @@
 CREATE TABLE usersHelo (
     id SERIAL PRIMARY KEY,
     username VARCHAR(20),
-    password VARCHAR(20),
-    profile_pic TEXT,
+    password VARCHAR(250),
+    profile_pic TEXT
 );
 
 CREATE TABLE posts (
