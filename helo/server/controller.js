@@ -71,14 +71,22 @@ module.exports ={
     },
 
     addPost: (req,res) => {
-        const {title,img,content,id} = req.body
+        const {title,img,content} = req.body
+        const {id} = req.params
         const db = req.app.get('db')
         db.add_post([title,img,content,id]).then(() =>{
             res.sendStatus(200)
         }).catch(() => {
             res.sendStatus(500)
         })
-    }
+    },
+
+    getMyPosts: async (req,res) => {
+        const {id} = req.params
+        const db = req.app.get('db')
+        const posts = await db.get_my_posts([id])
+        res.status(200).send(posts) 
+    },
 
     
 }

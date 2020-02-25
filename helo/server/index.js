@@ -32,5 +32,6 @@ massive({
 app.post('/api/auth/register', controller.register);
 app.post('/api/auth/login', controller.login);
 app.get(`/api/posts/`, controller.getPosts);
+app.get(`/api/myposts/:id`, controller.getMyPosts);
 app.post(`/api/post/:id`, controller.newPost);
 app.delete(`/api/posts/:id`, controller.deletePost);

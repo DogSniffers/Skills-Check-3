@@ -8,7 +8,7 @@ class Dashboard extends React.Component{
         this.state ={
             posts: [1,2],
             search: '',
-            userposts: true,
+            userposts: false,
             
         }
     }
@@ -26,6 +26,12 @@ class Dashboard extends React.Component{
     deletePost = (postId) => {
         axios.delete(`/api/posts/${postId}`).then(res =>{
             this.getPosts()
+        })
+    }
+
+    getMyPosts = (postId) => {
+        axios.get(`/api/myposts/${postId}`).then(res =>{
+            this.setState({posts:res.data})
         })
     }
 
@@ -66,7 +72,8 @@ class Dashboard extends React.Component{
                 <button onClick={this.searchPosts}>Search</button>
                 <button>Clear</button>
                 <div>My Posts:
-                <input type='checkbox'></input>
+                <input type='checkbox' onClick={() => this.getMyPosts()}></input>
+                {this.state.userposts === false}
                 {this.state.posts.map(post =>{
                     console.log(post)
                     return <div className='posts'>
