@@ -29,39 +29,12 @@ class Dashboard extends React.Component{
         })
     }
 
-    getMyPosts = (postId) => {
-        axios.get(`/api/myposts/${postId}`).then(res =>{
+    getMyPosts = () => {
+        console.log(this.props)
+        axios.get(`/api/myposts/${this.props.id}`).then(res =>{
             this.setState({posts:res.data})
         })
     }
-
-
-    // filterPosts = () =>{
-    //     if(this.state.posts === true){
-    //         if(this.state.search === ''){
-    //             return
-    //         }else if(this.state.search !== ''){
-    //             this.state.posts.forEach(Element,index =>{
-    //                 if(this.state.posts.content[index] !== this.state.search){
-    //                     this.state.posts.splice(index,1)
-    //                 }
-    //             })
-    //             }
-
-    //     }else if(this.state.search === ''){
-    //         this.state.posts.forEach(Element,index => {
-    //             if(this.state.posts.user_id[index] === this.props.user_id){
-    //                 this.state.posts.splice(index,1)
-    //             }
-    //     })
-    //     }else{
-    //         this.state.posts.forEach(Element,index =>{
-    //             if(this.state.posts.content[index] !== this.state.search){
-    //                 this.state.posts.props.splice(index,1)
-    //             }
-    //         })
-    //     }
-    // }
 
     render(){
         console.log(this.props)
@@ -73,7 +46,6 @@ class Dashboard extends React.Component{
                 <button>Clear</button>
                 <div>My Posts:
                 <input type='checkbox' onClick={() => this.getMyPosts()}></input>
-                {this.state.userposts === false}
                 {this.state.posts.map(post =>{
                     console.log(post)
                     return <div className='posts'>
@@ -88,9 +60,6 @@ class Dashboard extends React.Component{
                         :
                         null
                         }
-
-
-                    
                     </div>
                 })}
         
