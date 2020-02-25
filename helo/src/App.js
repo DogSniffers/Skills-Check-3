@@ -6,7 +6,7 @@ import route from './routes';
 import './App.css';
 
 function App(props) {
-  console.log(props.location.pathname)
+  // console.log(props.location.pathname)
   return (
     <div className="App">
     {props.location.pathname === '/'|| 

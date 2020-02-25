@@ -6,7 +6,7 @@ class Dashboard extends React.Component{
     constructor(){
         super()
         this.state ={
-            posts: [],
+            posts: [1,2],
             search: '',
             userposts: true,
             
@@ -17,11 +17,15 @@ class Dashboard extends React.Component{
         // console.log(this.posts)
     }
     getPosts = () =>{
-        axios.get(`/api/posts/${this.props.id}`,{userposts: this.userposts,search:this.search}).then(res =>{
-            console.log(res.data)
+        axios.get(`/api/posts/`).then(res =>{
+            console.log(res)
             this.setState({posts:res.data})
         })
     }
+
+    // deletePost = () => {
+    //     axios.delete(`/api/posts/${id}`)
+    // }
 
 
     // filterPosts = () =>{
@@ -52,7 +56,7 @@ class Dashboard extends React.Component{
     // }
 
     render(){
-        console.log(this.state.posts)
+        console.log(this.props)
         return(
             <div>
                 Dashboard
@@ -61,6 +65,24 @@ class Dashboard extends React.Component{
                 <button>Clear</button>
                 <div>My Posts:
                 <input type='checkbox'></input>
+                {this.state.posts.map(post =>{
+                    return <div className='posts'>
+                        <h1>{post.id}</h1>
+                        <h1>{post.title}</h1>
+                        <h1>{post.img}</h1>
+                        {post.id === this.props.id ? 
+                        <div>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+                        :
+                        null
+                        }
+
+
+                    
+                    </div>
+                })}
         
                 </div>
             </div>
