@@ -23,9 +23,11 @@ class Dashboard extends React.Component{
         })
     }
 
-    // deletePost = () => {
-    //     axios.delete(`/api/posts/${id}`)
-    // }
+    deletePost = (postId) => {
+        axios.delete(`/api/posts/${postId}`).then(res =>{
+            this.getPosts()
+        })
+    }
 
 
     // filterPosts = () =>{
@@ -66,6 +68,7 @@ class Dashboard extends React.Component{
                 <div>My Posts:
                 <input type='checkbox'></input>
                 {this.state.posts.map(post =>{
+                    console.log(post)
                     return <div className='posts'>
                         <h1>{post.id}</h1>
                         <h1>{post.title}</h1>
@@ -73,7 +76,7 @@ class Dashboard extends React.Component{
                         {post.id === this.props.id ? 
                         <div>
                             <button>Edit</button>
-                            <button>Delete</button>
+                            <button onClick={() => this.deletePost(post.post_id)}>Delete</button>
                         </div>
                         :
                         null

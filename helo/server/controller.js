@@ -5,7 +5,7 @@ module.exports ={
         // const {userposts,search} = req.body
         const db = req.app.get('db')
         const posts = await db.get_posts()
-        console.log(posts)
+        // console.log(posts)
         res.status(200).send(posts)
        
     },
@@ -60,7 +60,24 @@ module.exports ={
     },
 
     deletePost: (req,res) =>{
+        const {id} = req.params
+        console.log(id)
         const db = req.app.get('db')
+        db.delete_post([id]).then(() =>{
+            res.sendStatus(200)
+        }).catch(() =>{
+            res.sendStatus(500)
+        })
+    },
+
+    addPost: (req,res) => {
+        const {title,img,content,id} = req.body
+        const db = req.app.get('db')
+        db.add_post([title,img,content,id]).then(() =>{
+            res.sendStatus(200)
+        }).catch(() => {
+            res.sendStatus(500)
+        })
     }
 
     
