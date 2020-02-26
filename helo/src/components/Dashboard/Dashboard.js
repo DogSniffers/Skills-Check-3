@@ -45,7 +45,13 @@ class Dashboard extends React.Component{
                 <button onClick={this.searchPosts}>Search</button>
                 <button>Clear</button>
                 <div>My Posts:
-                <input type='checkbox' onClick={() => this.getMyPosts()}></input>
+                <input type='checkbox' onClick={(e) => {
+                    if(e.target.checked === true){
+                    this.getMyPosts()
+                }else{
+                    this.getPosts()
+                }
+                    }}></input>
                 {this.state.posts.map(post =>{
                     console.log(post)
                     return <div className='posts'>
