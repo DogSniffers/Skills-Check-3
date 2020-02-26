@@ -18,7 +18,7 @@ class Dashboard extends React.Component{
     }
     getPosts = () =>{
         axios.get(`/api/posts/`).then(res =>{
-            console.log(res)
+            // console.log(res)
             this.setState({posts:res.data})
         })
     }
@@ -30,21 +30,25 @@ class Dashboard extends React.Component{
     }
 
     getMyPosts = () => {
-        console.log(this.props)
+        // console.log(this.props)
         axios.get(`/api/myposts/${this.props.id}`).then(res =>{
             this.setState({posts:res.data})
         })
     }
 
+    handleSearchChange = event => {
+        this.setState({search: event.target.value})
+    }
+
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div>
                 Dashboard
                 <input placeholder='Search Posts'></input>
                 <button onClick={this.searchPosts}>Search</button>
                 <button>Clear</button>
-                <div>My Posts:
+                <div className='posts'>My Posts:
                 <input type='checkbox' onClick={(e) => {
                     if(e.target.checked === true){
                     this.getMyPosts()
@@ -53,11 +57,12 @@ class Dashboard extends React.Component{
                 }
                     }}></input>
                 {this.state.posts.map(post =>{
-                    console.log(post)
-                    return <div className='posts'>
+                    // console.log(post)
+                    return <div>
                         <h1>{post.id}</h1>
                         <h1>{post.title}</h1>
                         <h1>{post.img}</h1>
+                        <h1>{post.content}</h1>
                         {post.id === this.props.id ? 
                         <div>
                             <button>Edit</button>
