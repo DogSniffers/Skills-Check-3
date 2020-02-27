@@ -44,8 +44,9 @@ module.exports ={
         // console.log(hash,username)
 
         let newUser = await db.register({username,hash})
-        // console.log(newUser)
+        console.log(newUser)
         session.user = newUser
+        console.log(session.user)
         res.status(200).send(session.user)
     },
 
@@ -82,10 +83,16 @@ module.exports ={
     },
 
     getMyPosts: async (req,res) => {
-        const {id} = req.params
+        const {id} = req.session.user
+        console.log(id)
         const db = req.app.get('db')
         const posts = await db.get_my_posts([id])
         res.status(200).send(posts) 
+    },
+
+    logout: (req,res) => {
+        req.session.destroy
+        res.sendStatus(200)
     },
 
     

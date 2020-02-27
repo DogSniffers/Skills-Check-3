@@ -57,4 +57,16 @@
   background-color: turquoise;
 }
 
+.post {
+  /* height: 100px; */
+  /* width: 250px; */
+  background-color: aliceblue;
+}
+
+.post-holder {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 

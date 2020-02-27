@@ -38,6 +38,7 @@ class Auth extends React.Component{
         const {username,password} = this.state
         axios.post('/api/auth/register', {username,password}).then(res =>{
             this.props.getUser(res.data)
+            console.log(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => console.log(err))
     };

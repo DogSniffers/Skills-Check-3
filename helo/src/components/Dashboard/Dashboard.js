@@ -31,7 +31,7 @@ class Dashboard extends React.Component{
 
     getMyPosts = () => {
         // console.log(this.props)
-        axios.get(`/api/myposts/${this.props.id}`).then(res =>{
+        axios.get(`/api/myposts/`).then(res =>{
             this.setState({posts:res.data})
         })
     }
@@ -56,9 +56,10 @@ class Dashboard extends React.Component{
                     this.getPosts()
                 }
                     }}></input>
+                    <div className='post-holder'>
                 {this.state.posts.map(post =>{
                     // console.log(post)
-                    return <div>
+                    return <div className='post'>
                         <h1>{post.id}</h1>
                         <h1>{post.title}</h1>
                         <h1>{post.img}</h1>
@@ -68,11 +69,13 @@ class Dashboard extends React.Component{
                             <button>Edit</button>
                             <button onClick={() => this.deletePost(post.post_id)}>Delete</button>
                         </div>
+                        
                         :
                         null
                         }
                     </div>
                 })}
+                </div>
         
                 </div>
             </div>

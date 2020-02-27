@@ -9,8 +9,8 @@ function App(props) {
   // console.log(props.location.pathname)
   return (
     <div className="App">
-    {props.location.pathname === '/'|| 
-    props.location.pathname === '/' ? (
+    {/* {props.location.pathname === '/'||  */}
+    {props.location.pathname === '/' ? (
       <>
       <Auth/>
       {route}

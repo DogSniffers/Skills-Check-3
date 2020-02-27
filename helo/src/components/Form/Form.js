@@ -31,8 +31,8 @@ class Form extends React.Component{
 
 
     render(){
-        console.log(this.state)
-        console.log(this.props)
+        // console.log(this.state)
+        // console.log(this.props)
         return(
             <div>New Post:
                 <input  onChange = {this.handleTitleChange}placeholder='Title'></input>
@@ -50,7 +50,6 @@ const mapStateToProps = reduxState =>{
     return{
         id
     }
-
 }
 
 export default connect(mapStateToProps)(withRouter(Form));
