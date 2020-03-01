@@ -41,9 +41,10 @@ class Dashboard extends React.Component{
     }
 
     render(){
-        // console.log(this.props)
+        console.log(this.state.posts)
         return(
             <div>
+                <div className='dashboard'>
                 Dashboard
                 <input placeholder='Search Posts'></input>
                 <button onClick={this.searchPosts}>Search</button>
@@ -55,7 +56,7 @@ class Dashboard extends React.Component{
                 }else{
                     this.getPosts()
                 }
-                    }}></input>
+                    }}></input></div>
                     <div className='post-holder'>
                 {this.state.posts.map(post =>{
                     // console.log(post)

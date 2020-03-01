@@ -44,9 +44,9 @@ module.exports ={
         // console.log(hash,username)
 
         let newUser = await db.register({username,hash})
-        console.log(newUser)
+        // console.log(newUser)
         session.user = newUser
-        console.log(session.user)
+        // console.log(session.user)
         res.status(200).send(session.user)
     },
 
@@ -62,7 +62,7 @@ module.exports ={
 
     deletePost: (req,res) =>{
         const {id} = req.params
-        console.log(id)
+        // console.log(id)
         const db = req.app.get('db')
         db.delete_post([id]).then(() =>{
             res.sendStatus(200)
@@ -84,7 +84,7 @@ module.exports ={
 
     getMyPosts: async (req,res) => {
         const {id} = req.session.user
-        console.log(id)
+        // console.log(id)
         const db = req.app.get('db')
         const posts = await db.get_my_posts([id])
         res.status(200).send(posts) 
@@ -94,6 +94,10 @@ module.exports ={
         req.session.destroy
         res.sendStatus(200)
     },
+
+    editPost: (req,res) => {
+        
+    }
 
     
 }

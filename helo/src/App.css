@@ -70,3 +70,8 @@
   justify-content: space-evenly;
 }
 
+.dashboard {
+  width: 100%;
+  background-color: chartreuse;
+  height: 25%;
+}

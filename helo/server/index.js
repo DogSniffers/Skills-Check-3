@@ -36,3 +36,4 @@ app.get(`/api/posts/`, controller.getPosts);
 app.get(`/api/myposts/`, controller.getMyPosts);
 app.post(`/api/post/:id`, controller.newPost);
 app.delete(`/api/posts/:id`, controller.deletePost);
+// app.put(`/api/posts`, controller.editPost);
