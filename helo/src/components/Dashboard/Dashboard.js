@@ -58,14 +58,18 @@ class Dashboard extends React.Component{
     }
 
     handleCancelEditing = () => {
-        this.setState({isEditing: false})
+        this.setState({isEditing: false, editTitle:'', editImage:'',editContent:''})
+    }
+
+    handleConfirmChanges = () => {
+        axios.put('/api/posts', {title:this.state.editTitle,image:this.state.editImage,content:this.state.editContent,id:8}).then(this.handleCancelEditing()).catch(err => console.log(err))
     }
 
     
 
     render(){
         // console.log(this.state.posts)
-        console.log(this.state.editTitle)
+        // console.log(this.state.editTitle)
         return(
             <div>
                 <div className='dashboard'>
