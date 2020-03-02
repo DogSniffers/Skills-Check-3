@@ -9,6 +9,10 @@ class Dashboard extends React.Component{
             posts: [1,2],
             search: '',
             userposts: false,
+            isEditing: false,
+            editTitle: '',
+            editImage:'',
+            editContent:''
             
         }
     }
@@ -39,9 +43,29 @@ class Dashboard extends React.Component{
     handleSearchChange = event => {
         this.setState({search: event.target.value})
     }
+    handleEditTitle = event => {
+        this.setState({editTitle: event.target.value})
+    }
+    handleEditImage = event => {
+        this.setState({editImage: event.target.value})
+    }
+    handleEditContent = event => {
+        this.setState({editContent: event.target.value})
+    }
+
+    handleIsEditing = () => {
+        this.setState({isEditing: true})
+    }
+
+    handleCancelEditing = () => {
+        this.setState({isEditing: false})
+    }
+
+    
 
     render(){
-        console.log(this.state.posts)
+        // console.log(this.state.posts)
+        console.log(this.state.editTitle)
         return(
             <div>
                 <div className='dashboard'>
@@ -67,7 +91,20 @@ class Dashboard extends React.Component{
                         <h1>{post.content}</h1>
                         {post.id === this.props.id ? 
                         <div>
-                            <button>Edit</button>
+                            <button onClick={() => this.handleIsEditing()}>Edit</button>
+                            {this.state.isEditing === true ?
+                            <div>
+                                <div>
+                                    <input onChange={this.handleEditTitle}></input>
+                                    <input onChange={this.handleEditImage}></input>
+                                    <input onChange={this.handleEditContent}></input>
+                                </div>
+                            <button>Confirm Changes</button>
+                            <button onClick={() => this.handleCancelEditing()}>Cancel Changes</button>
+                            </div>
+                            :
+                            null
+                            }
                             <button onClick={() => this.deletePost(post.post_id)}>Delete</button>
                         </div>
                         
