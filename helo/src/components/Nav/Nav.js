@@ -15,10 +15,11 @@ class Nav extends React.Component{
             <div className='navbar'>
             <div>
                 <div>
-                    <h1>HELO</h1>
-                <p>{this.props.id}</p>
-                <p>{this.props.username}</p>
+                    <h1 className='helo'>HELO</h1>
+                <p className='user'>User:{this.props.id}</p>
+                <p className='username'>Username:{this.props.username}</p>
                 </div>
+                <div className='navbuttons'>
                 <div>
                     <Link to ='dashboard'><button>Home</button></Link>
                 </div>
@@ -27,6 +28,7 @@ class Nav extends React.Component{
                 </div>
                 <div>
                     <Link to ='/'><button onClick={() => this.handleLogOut()}>Logout</button></Link>
+                </div>
                 </div>
                 </div>
             </div>

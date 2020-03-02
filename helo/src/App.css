@@ -57,21 +57,94 @@
   background-color: turquoise;
 }
 
-.post {
-  /* height: 100px; */
-  /* width: 250px; */
-  background-color: aliceblue;
+.helo {
+  color: aliceblue;
+  position: fixed;
+  left: 10px;
+  top:-30px;
+  font-family:Florence, cursive; 
+  font-style: italic;
+  font-size: 55px;
+}
+.user {
+  color: aliceblue;
+  position: fixed;
+  left: 20px;
+  top:80px;
+}
+.username {
+  color: aliceblue;
+  position: fixed;
+  top:100px;
+  left:20px;
+}
+.navbuttons {
+  position: fixed;
+  left: 65px;
+  top: 145px;
 }
 
+
 .post-holder {
-  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  overflow: auto;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+}
+.post {                      
+  width: 750px;
+  height: 370px;
+  background-color: aliceblue;
+  /* align-items: baseline; */
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.postid {
+  position: relative;
+  top: -15px;
+  left: -350px;
+  width: 100%;
+}
+.posttitle {
+  position: relative;
+  top:-90px;
+  font-size: 60px;
+}
+.postimage {
+position: relative;
+top:-125px;
+left: 20px;
+width: 200px;
+height: 200px;
+background-color: lightskyblue;
+border-radius: 20px;
+}
+.postcontent {
+  position: relative;
+  left: 300px;
+  top: -330px;
+  width: 380px;
+  height: 180px;
+  background-color: red;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.postbuttons {
+  position: relative;
+  size: 60px;
+  top:-300px;
+}
+.dashboard {
+  width: 80%;
+  background-color: lightgray;
+  height: 100%;
+  position: fixed;
+  left:20%;
+  overflow: auto;
 }
 
-.dashboard {
-  width: 100%;
-  background-color: chartreuse;
-  height: 25%;
-}

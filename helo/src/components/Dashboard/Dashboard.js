@@ -62,13 +62,13 @@ class Dashboard extends React.Component{
     }
 
     handleConfirmChanges = () => {
-        axios.put('/api/posts', {title:this.state.editTitle,image:this.state.editImage,content:this.state.editContent,id:8}).then(this.handleCancelEditing()).catch(err => console.log(err))
+        axios.put('/api/posts', {title:this.state.editTitle,image:this.state.editImage,content:this.state.editContent,id:46}).then(this.handleCancelEditing()).catch(err => console.log(err))
     }
 
     
 
     render(){
-        // console.log(this.state.posts)
+        console.log(this.state.posts)
         // console.log(this.state.editTitle)
         return(
             <div>
@@ -89,12 +89,12 @@ class Dashboard extends React.Component{
                 {this.state.posts.map(post =>{
                     // console.log(post)
                     return <div className='post'>
-                        <h1>{post.id}</h1>
-                        <h1>{post.title}</h1>
-                        <h1>{post.img}</h1>
-                        <h1>{post.content}</h1>
+                        <h1 className='postid'>{post.id}</h1>
+                        <h1 className='posttitle'>{post.title}</h1>
+                        <h1 className='postimage'>{post.img}</h1>
+                        <h1 className='postcontent'>{post.content}</h1>
                         {post.id === this.props.id ? 
-                        <div>
+                        <div className='postbuttons'>
                             <button onClick={() => this.handleIsEditing()}>Edit</button>
                             {this.state.isEditing === true ?
                             <div>
@@ -103,7 +103,7 @@ class Dashboard extends React.Component{
                                     <input onChange={this.handleEditImage}></input>
                                     <input onChange={this.handleEditContent}></input>
                                 </div>
-                            <button>Confirm Changes</button>
+                            <button onClick={this.handleConfirmChanges}>Confirm Changes</button>
                             <button onClick={() => this.handleCancelEditing()}>Cancel Changes</button>
                             </div>
                             :
