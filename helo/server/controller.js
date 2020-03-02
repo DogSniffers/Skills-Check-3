@@ -95,8 +95,11 @@ module.exports ={
         res.sendStatus(200)
     },
 
-    editPost: (req,res) => {
-        
+    editPost: async (req,res) => {
+        const db = req.app.get('db')
+        const {title,image,content,id} = req.body
+        const editedPost = await db.edit_post([title,image,content,id])
+        res.status(200).send(editedPost)
     }
 
     
